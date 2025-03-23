@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> <!-- Typed.js CDN added -->
+
+    <style>
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #2B2B2B;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+            padding: 15px 20px;
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #444;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            gap: 30px;
+        }
+
+        .box {
+            width: 45%;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .image-box {
+            width: 250px;
+            height: 250px;
+            border-radius: 30%;
+            overflow: hidden;
+            border: 2px solid black;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #bobzi {
+            font-size: 1.8rem;
+        }
+
+        #element {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        #icon i {
+            font-size: 30px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        #icon i:hover {
+            color: #f39c12;
+        }
+.btn {
+    background: white;
+    border: none;
+    color: rgb(77, 125, 92);
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f39c12;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease-in-out;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.btn:hover {
+    color: black;
+}
+.heading{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.portfolio-box {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.button-container {
+    text-align: center;
+    justify-content: center;
+}
+
+.beautiful-button {
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
+    border: none;
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 20PX;
+    margin-right: 80px;
+}
+
+.beautiful-button:hover {
+    background: linear-gradient(45deg, #f06595, #ff6b6b);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.beautiful-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.h1{
+    color: white;
+    text-align: center;
+    margin-top: 120px;
+}
+.view-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: white;
+    color: rgb(206, 13, 174);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+    background-color: black;
+}
+
+/* Contact Form */
+.form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#id {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.massage {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: none;
+}
+
+/* Footer */
+.new-footer {
+    background-color:black;
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-section {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+}
+
+.footer-bottom {
+    padding: 15px 0;
+    font-size: 14px;
+    color: #141212;
+}
+#b{
+    color:white;
+}
+#element{
+    color:white;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+    .ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .portfolio-container {
+        flex-direction: column;
+    }
+
+    .portfolio-box {
+        max-width: 90%;
+    }
+
+    .view-button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    #bobzi {
+        font-size: 1.5rem;
+    }
+
+    .logo a {
+        font-size: 1.2rem;
+    }
+
+    .beautiful-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    .image-box{
+        border-radius: 0%;
+        border: none;
+    }
+}
+    </style>
+</head>
+<body> 
+    <nav class="navbar">
+    <h2 class="heading">PORTFOLIO</h2>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+</nav>
+
+    <div class="container">
+        <div class="box">
+            <div id="bobzi">
+                <div>Hi</div>
+                My Name is <span id="b">Shoaib</span> and
+                <div>I am a passionate</div>
+                <span id="element"></span>
+                <div id="icon">
+                    <i class="fa-brands fa-wordpress"></i>
+                    <i class="fa-brands fa-html5"></i>
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <i class="fa-brands fa-js"></i>
+                    <i class="fa-brands fa-react"></i>
+                </div>
+                <button class="btn">DOWNLOAD CV</button>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="IMG-20250323-WA0001-fotor-bg-remover-20250323144828.png" alt="Shoaib" width="30px">
+        </div>
+    </div>
+ <hr>
+ <div class="portfolio-container">
+    <div class="portfolio-box">
+      <img src="https://i.pinimg.com/564x/cf/a3/3d/cfa33d32d9edb1443442d70c544153f8.jpg" alt="Project 1">
+      <button class="view-button">View Project</button>
+    </div>
+    <div class="portfolio-box">
+      <img src="data:image/jpeg;base64,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" alt="project 2">
+      <button class="view-button">View Project</button>
+    </div>
+  </div>
+  <div class="portfolio-container">
+    <div class="portfolio-box">
+      <img src="https://i.pinimg.com/564x/12/50/2f/12502fd7c9d1121c2df46b3209d9a853.jpg" alt="Project 1">
+    <button class="view-button">View Project</button>
+    </div>
+    <div class="portfolio-box">
+      <img src="https://i.pinimg.com/564x/ed/61/74/ed6174f0d06350aeda6746f2b9d8ea7f.jpg">
+      <button class="view-button">View Project</button>
+    </div>
+  </div>
+  <div>
+    <hr class="hr">
+  <h1 class="h1">Enter your Details</h1>
+  <form action="php" class="form">
+      <input type="text" placeholder="NAME" id="id">
+      <br>
+      <br>
+      <input type="text" placeholder="EMAIL" id="id">
+      <br>
+      <br>
+      <input type="text" placeholder="PHONE NUMBER" id="id">
+      <br>
+      <br>
+      <input type="text" placeholder="ADRESS" id="id">
+      <br>
+          <br>
+          <label for="message"></label>
+          <textarea id="message" name="message" rows="5" required class="massage">your massage</textarea>
+  </form>
+  <div class="button-container">
+      <button class="beautiful-button" id="submitButton">submit</button></a></button>
+  </div>
+  </div>
+  <footer class="new-footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>Shoaib's Portfolio</h3>
+        <p>Crafting beautiful websites <br>with modern web technologies.</p>
+      </div>
+      <div class="footer-section contact">
+        <h3>for more info</h3>
+        <p>Email: shoaib-coding-vala@gmail.com</p>
+        <p>Phone: +92 3460206227</p>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Me</h3>
+        <p>Email: shoaib-coding-vala@gmail.com</p>
+        <p>Phone: +92 3460206227</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Shoaib's Portfolio | All Rights Reserved</p>
+    </div>
+  </footer>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Front-end Developer', 'Website Designer', 'WordPress Developer', 'Video Editor'],
+            typeSpeed: 45,
+            backSpeed: 30,
+            loop: true
+        });
+    </script>
+</body>
+</html>
+
+
